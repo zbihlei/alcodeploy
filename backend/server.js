@@ -17,7 +17,7 @@ async function startServer() {
   apolloServer.applyMiddleware({ app: app });
 
   app.use(cors({
-    origin: ["https://https://alcodeploy-api.vercel.app/"],
+    origin: ["https://alcodeploy-frontend.vercel.app/"],
     methods: ["POST", "GET"],
     credentials: true
   }));
