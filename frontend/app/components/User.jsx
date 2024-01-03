@@ -1,20 +1,26 @@
 "use client"
 import Admin from '../components/Admin'
 import Customer from '../components/Customer';
-import {useAuth} from '../hooks/useAuth';
+import { useAuth } from '../hooks/useAuth';
 
 const User = () => {
+  const { email } = useAuth();
 
-    const {email} = useAuth();
+  let componentToShow = null;
+
+  if (typeof window !== 'undefined') {
+    if (email === 'admin@mail.com') {
+      componentToShow = <Admin />;
+    } else {
+      componentToShow = <Customer />;
+    }
+  }
+
   return (
     <>
-    {email === 'admin@mail.com' ? 
-      <Admin/>
-      :
-      <Customer/>
-      }
-      </>
-  )
+      {componentToShow}
+    </>
+  );
 }
 
-export default User
+export default User;
