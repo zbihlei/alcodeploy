@@ -1,8 +1,8 @@
 "use client"
 
-import styles from '../styles/confirmList.module.scss';
+import styles from '../styles/confirm_list.module.scss';
 import { useSelector } from "react-redux";
-import ConfirmListItem from '../components/ConfirmListItem';
+import ConfirmListItem from './ConfrimList_Item';
 
 const ConfirmList = () => {
   
