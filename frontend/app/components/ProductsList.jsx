@@ -1,6 +1,6 @@
 "use client"
 
-import styles from '../styles/productsList.module.scss';
+import styles from '../styles/products_List.module.scss';
 import Link from 'next/link';
 import { LOCAL_HOST } from '../utils/constants';
 
