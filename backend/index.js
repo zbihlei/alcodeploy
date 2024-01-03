@@ -5,6 +5,9 @@ import resolvers from './resolvers.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+const name = process.env.NAME;
+const password = process.env.PASS;
+
 async function startServer() {
   const app = express();
   const apolloServer = new ApolloServer({
@@ -29,7 +32,7 @@ async function startServer() {
   });
 
   try {
-    await mongoose.connect('mongodb+srv://liiamnissen:1111@cluster0.rud9g1z.mongodb.net/alco');
+    await mongoose.connect(`mongodb+srv://${name}:${password}@cluster0.rud9g1z.mongodb.net/alco`);
     console.log('mongoose connected');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
