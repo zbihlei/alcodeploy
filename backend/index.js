@@ -24,19 +24,6 @@ async function startServer() {
 
   apolloServer.applyMiddleware({ app: app });
 
-  app.use(cors({
-    origin: ["https://alcodeploy-frontend.vercel.app/"],
-    methods: ["POST", "GET"],
-    credentials: true
-  }));
-  
-  app.options('*', cors({
-    origin: "https://alcodeploy-frontend.vercel.app",
-    methods: ["POST", "GET"],
-    credentials: true
-  }));
-  
-
   app.use(express.json());
 
   app.use((req, res) => {
