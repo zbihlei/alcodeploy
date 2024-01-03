@@ -13,7 +13,12 @@ async function startServer() {
   const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
+    cors: {
+      origin: "https://alcodeploy-frontend.vercel.app",
+      credentials: true
+    }
   });
+  
 
   await apolloServer.start();
 
@@ -24,6 +29,13 @@ async function startServer() {
     methods: ["POST", "GET"],
     credentials: true
   }));
+  
+  app.options('*', cors({
+    origin: "https://alcodeploy-frontend.vercel.app",
+    methods: ["POST", "GET"],
+    credentials: true
+  }));
+  
 
   app.use(express.json());
 
