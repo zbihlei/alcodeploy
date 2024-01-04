@@ -1,6 +1,6 @@
 "use client"
 import styles from '../styles/buyed.module.scss';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; 
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -11,20 +11,10 @@ const Buyed = () => {
   useEffect(() => {
     const redirectTimeout = setTimeout(() => {
       router.push('/');
-    }, 5000);
+    }, 4000);
 
     return () => clearTimeout(redirectTimeout);
-  }, [router]);
-
-  if (!basket || basket.length === 0) {
-    return (
-      <div className={styles.wrapp}>
-        <div className={styles.text}>
-          <span>You</span> did not buy anything yet...
-        </div>
-      </div>
-    );
-  }
+  }, [router, basket]);
 
   return (
     <div className={styles.wrapp}>
