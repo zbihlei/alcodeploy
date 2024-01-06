@@ -6,20 +6,20 @@ import { LOCAL_HOST } from '../utils/constants';
 
 import { useQuery } from '@apollo/client';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
+import Spiner from '../components/Spinner';
 
 if (process.env.NODE_ENV === 'development') { //dev mode only
   loadDevMessages();
   loadErrorMessages();
 }
 
-const ProductList = ({specific, title, gqlQuery}) => {
+const ProductList = ({title, gqlQuery}) => {
 
-  const { data } =  useQuery(gqlQuery);
+  const { data, loading } =  useQuery(gqlQuery);
   const firstKey = data ? Object.keys(data)[0] : null;
   const list = firstKey ? data[firstKey] : [];
 
   const barCount = list && list.some(item => item.type);
-  // const barCount = specific && specific.some(item => item.type);
   const beer = title  === 'beer';
   const energetic = title  === 'energetic';
   const coctail = title  === 'coctail';
@@ -38,12 +38,14 @@ const ProductList = ({specific, title, gqlQuery}) => {
     ${wine ? styles.wine : ''}
     ${whiskey ? styles.whiskey : ''}`}>
 
-    {/* {specific.map(item => ( */ /*using with sql*/} 
-    {list.map((item, index) => (
+    {loading? 
+    <Spiner/>
+    :
+    <>
+        {list.map((item, index) => (
     <>
     {item.type ?  
     
-    // <Link importance="high" rel="preload"  href={`${LOCAL_HOST}/${item.type}/${title}/${item.id}`} key={index} style={{textDecoration: 'none'}}>
     <Link importance="high" rel="preload"  href={`${LOCAL_HOST}/${item.type}/${title}/${item._id}`} key={index} style={{textDecoration: 'none'}}>
 
     <div className={styles.item} >
@@ -75,8 +77,8 @@ const ProductList = ({specific, title, gqlQuery}) => {
     </>
       ))}
 
+    </>}
 </div>
-
   )
 }
 
