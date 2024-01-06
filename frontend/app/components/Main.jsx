@@ -51,7 +51,7 @@ export default function Main({gqlQuery}) {
         rel="preload"   
         key={index}  
         href={gen.name} 
-        className={`${styles.part} ${gen.id === '6585aec47ebe3fec296f7fa1' ? styles.background1 : styles.background2}`}
+        className={`${styles.part} ${gen._id === '6585aec47ebe3fec296f7fa1' ? styles.background1 : styles.background2}`}
         >
           <span>{gen.name}</span>
         </Link>
