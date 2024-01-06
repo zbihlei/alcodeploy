@@ -12,11 +12,11 @@ const MenuSM = ({onClick}) => {
     const basket= useSelector((state)=>state.basket.basket);
     const [visible, setVisible] = useState(false);
 
-    useEffect(() => {
+    const handleToggleMenu = () => {
+      setVisible((prevVisible) => !prevVisible);
       if (onClick && typeof onClick === 'function') {
-        setVisible(true);
-      }
-    }, [onClick]);
+        onClick(); 
+    };
 
   return (
     
@@ -28,7 +28,7 @@ const MenuSM = ({onClick}) => {
     transition: 'visibility 0.3s, opacity 0.3s ease-in-out'
   }}
 > 
-  <button className={styles.close} onClick={() => setVisible((prevVisible) => !prevVisible)}>X</button>  
+  <button className={styles.close} onClick={handleToggleMenu}>X</button>  
    {isAuth ? 
     <>
       <div className={styles.name}> <span>Hello</span>  <Link href='/user' className={styles.link}>{email}</Link> </div>
