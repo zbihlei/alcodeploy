@@ -97,11 +97,23 @@
 @media (max-width: $breakpoint-small) {
   .wrapp {
     width: 100%;
+    .searchfield{
+      margin-left: 0;
+    }
   }
   .searchbox{
-    width: 94%!important;
+    position:sticky;
+    min-width: 800px;
+    left: -90px;
    }
   .searchel{
-    gap: 5px!important;
+    gap: 10px!important;
+    width: 100%;
+  }
+  .name{
+    padding-left: 150px;
+  }
+  .image{
+    padding-right: 250px;
   }
 }  

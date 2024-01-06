@@ -127,3 +127,12 @@ footer{
     display: none;
   }
 }
+
+@media screen and (max-width: 768px ){
+  header{
+    justify-content: space-around;
+  }
+  .right{
+    margin-right: 0;
+  }
+}

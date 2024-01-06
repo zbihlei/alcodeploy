@@ -1,132 +1,67 @@
 @import  'variables';
-.wrapp{ 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    position: relative;
-    background-image: url('../images//bar.png');
-    z-index: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 0 -800px;
-}
+.overlay{
+position: absolute;
+z-index: 999;
+width: 100%;
+height: 115%;
+display: flex;
+justify-content: center;
+align-items: center;
 
-  .link{
-      color:black;
-      text-decoration: none;
-      color: $pink;
-  }
-
-  .name{
-      color: $pink;
-      font-size: 24px;
-  }
-
-
-.part {
-    text-transform: uppercase;
-    text-decoration: none;
-    text-align: center;
-    color: black;
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    position: relative;
-    overflow: visible;
-    transition: transform 0.7s ease-in-out;
-
-
-    span{
-        cursor: pointer;
-        width: 100%;
-        height: 100vh;
+    .wrapp{
+        position: absolute;
+        width: 400px;
+        height: 300px;
+        border: 3px solid  $pink;
         display: flex;
-        align-items: center; 
-        justify-content: center; 
-        transition: transform 0.7s ease-in-out;
-        &:hover{
-              transform: scale(1.1);
+        flex-direction: column;
+        background-color: black;
+        .text{
+            margin-top: 70px;
+            font-size: 24px;
+            text-align: center;
+            text-transform: uppercase;
+            color: white;
+        }
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 70px;
+        .btn{
+            cursor: pointer;
+            text-align: center;
+            width: 30%;
+            height: 40px;
+            background-color:black;
+            color: white;
+            font-size: 24px;
+            text-transform: uppercase;
+            border: none;
+            transition: all 0.4s ease-in-out;
+            &:hover{
+            background-color: white;
+            color: $pink;
+             }
+           }
         }
     }
+}
 
-  }
-  
-  .part::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    z-index: -1; 
-    filter: grayscale(100%); 
-    background-size: cover;
-    transition: opacity 1.5s ease-in-out, filter 2s ease-in-out;
-    
-  }
-  
-  .part.background1::before {
-    background-image: url('../images/lite.jpeg');
-    background-position: 0 -170px;
-  }
-  
-  .part.background2::before {
-    background-image: url('../images/strong.jpeg');
-    background-position: 0 -100px;
-  }
-  
-  .part:hover::before {
-    filter: grayscale(0%);
-    opacity: 1;
-  }
-  
-  .part:hover {
-    color: $pink;
-    transition: transform 0.7s ease-in-out;
-  }
-
-  .burger{
-    display: none;
-    width: 40px;
-    height: 40px;
-    border-left: none;
-    border-right: none;
-    border-bottom: 4px solid white;
-    border-top: 4px solid white;
-    background-color: inherit;
-    border-radius: 3px;
-    margin-top: 25px;
-    margin-right: 30px;
-      span{
-        display: block;
-        height: 4px;
-        width: 80%;
-        margin: 0 auto;
-        border-radius: 3px;
-        background-color: white;
-      }
-  }
-
-  @media (max-width: $breakpoint-small){
-    .wrapp{
-      flex-direction: column;
-    }
-    .part:hover::before {
-      filter: grayscale(100%);
-      opacity: 0;
-    }
-  }
-
-  @media screen and (max-width: $breakpoint-medium){
-    .wrapp{
-      background-size: cover;
-      background-position: 0 0;
-    } 
-    .burger{
-      display: block;
+@media screen and (max-width: $breakpoint-small){
+    .overlay{
+        top: -100px;
+        background-color: black;
+        
+        .wrapp{
+            position: absolute;
+            top: 200px;
+            width: 300px;
+            border: 3px solid  $pink;
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+        }
     }
   }
