@@ -4,17 +4,17 @@ import styles from '../styles/menusm.module.scss';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import {useAuth} from '../hooks/useAuth';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 const MenuSM = ({onClick}) => {
 
     const {isAuth, email} = useAuth();
     const basket= useSelector((state)=>state.basket.basket);
-    const [clicked, setClicked] = useState(true);
+    // const [clicked, setClicked] = useState(true);
 
-    useEffect(()=>{
-        setClicked((prevClicked) => !prevClicked);   
-    },[onClick])
+    // useEffect(()=>{
+    //     setClicked((prevClicked) => !prevClicked);   
+    // },[onClick])
 
   return (
     
@@ -26,7 +26,7 @@ const MenuSM = ({onClick}) => {
     transition: 'visibility 0.3s, opacity 0.3s ease-in-out'
   }}
 > 
-  <button className={styles.close} onClick={()=>setClicked(((prevClicked) => !prevClicked))}>X</button>  
+  <button className={styles.close} onClick={onClick}>X</button>  
    {isAuth ? 
     <>
       <div className={styles.name}> <span>Hello</span>  <Link href='/user' className={styles.link}>{email}</Link> </div>
