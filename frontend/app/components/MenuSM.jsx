@@ -26,7 +26,7 @@ const MenuSM = ({onClick}) => {
     transition: 'visibility 0.3s, opacity 0.3s ease-in-out'
   }}
 > 
-  <button className={styles.close} onClick={setClicked((prevClicked) => !prevClicked)}>X</button>  
+  <button className={styles.close} onClick={()=>setClicked(((prevClicked) => !prevClicked))}>X</button>  
    {isAuth ? 
     <>
       <div className={styles.name}> <span>Hello</span>  <Link href='/user' className={styles.link}>{email}</Link> </div>
