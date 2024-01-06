@@ -48,3 +48,20 @@ align-items: center;
         }
     }
 }
+
+@media screen and (max-width: $breakpoint-small){
+    .overlay{
+        top: -100px;
+        background-color: black;
+        
+        .wrapp{
+            position: absolute;
+            top: 200px;
+            width: 300px;
+            border: 3px solid  $pink;
+            display: flex;
+            flex-direction: column;
+            background-color: black;
+        }
+    }
+  }
