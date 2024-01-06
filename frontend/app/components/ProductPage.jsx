@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useDispatch } from "react-redux";
 import { addToBasket } from '../slices/basketSlice';
 import { usePathname } from 'next/navigation';
-// import MyLoader from './Loader';
+import Spiner from '../components/Spinner';
 
 import { useQuery } from '@apollo/client';
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
@@ -15,12 +15,12 @@ if (process.env.NODE_ENV === 'development') { //dev mode only
   loadErrorMessages();
 }
 
-const ProductPage = ({title, specificProduct, gqlQuery}) => {
+const ProductPage = ({title, gqlQuery}) => {
   
-  const pathname = usePathname(); //also need with sql
+  const pathname = usePathname(); 
 
   const id = pathname.split('/').pop();
-  const { data } = useQuery(gqlQuery, {
+  const { data, loading } = useQuery(gqlQuery, {
     variables: { id: id },
   });
   const firstKey = data ? Object.keys(data)[0] : null;
@@ -34,15 +34,7 @@ const ProductPage = ({title, specificProduct, gqlQuery}) => {
   const wine = title  === 'wine';
   const whiskey = title  === 'whiskey';
 
-  // const prod = specificProduct[0];
-//   let firstVol;
-//     if (prod.volume) {
-//   firstVol = prod.volume.split(' / ')[0];
-// }
-
-  // const [description, setDescription] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [volume, setVolume] = useState([]); // firstVol initial state with sql
+  const [volume, setVolume] = useState([]); 
   const [quantity, setQuantity] = useState(1);
   const [chosenVol, setChosenVol] = useState();
   const [pricesWithVolumes, setPricesWithVolumes] = useState({});
@@ -53,7 +45,6 @@ const ProductPage = ({title, specificProduct, gqlQuery}) => {
   const quantityRef = useRef(quantity);  
 
   useEffect(() => {
-    // splitDescription(prod.description);
     volumes();
     calculateNewPrices(prod.price, volume);
     calculateTotalPrice();
@@ -62,7 +53,6 @@ const ProductPage = ({title, specificProduct, gqlQuery}) => {
   //new item add to basket
 
   const newItem = {
-    // id: prod.id,
     id: prod._id,
     type: prod.type,
     name: prod.name,
@@ -109,23 +99,6 @@ const ProductPage = ({title, specificProduct, gqlQuery}) => {
     }
   }
 
-  //split the text 2 col
-
-  // function splitDescription(){
-  //   const regex = /([^:]+):(.+)/g;
-  //   let match;
-  //   const rows = [];
-  //   while ((match = regex.exec(prod.description)) !== null) {
-  //     const key = match[1].trim();
-  //     const value = match[2].trim();
-  //     rows.push({ key, value });
-  //   }
-  //   setDescription(rows);
-  //   setLoading(false);
-  // }
-
-    //prices with volumes
-
   const calculateNewPrices = (price, volumes) => {
     if (typeof price !== 'number' || !Array.isArray(volumes)) {
       return;
@@ -158,32 +131,17 @@ const ProductPage = ({title, specificProduct, gqlQuery}) => {
     ${wine ? styles.wine : ''}
     ${whiskey ? styles.whiskey : ''}`}>
 
-      <div className={styles.left}>
+    {loading? 
+    <Spiner/>
+    :
+    <>
+          <div className={styles.left}>
         <div className={styles.image}>
         <img src={prod.image} alt="image" />        
         </div>
       </div>
       <div className={styles.right}>
         <div className={styles.name}>{prod.name}</div>
-        {/* <div className={styles.description}>
-        <>
-        {loading ?  
-        <div className={styles.loading}>
-          <ul className={styles.descriptionList}>
-            <li className={styles.description__column} >
-            <MyLoader/>
-            </li>
-          </ul>
-        </div>
-        :
-         description.map((item, index) => (   
-          <ul key={index} className={styles.descriptionList}>
-            <li className={styles.description__column}>{item.key}:</li> 
-            <li className={styles.description__column}>{item.value}</li>
-          </ul>
-        ))}
-      </>
-        </div> */}
       <div className={styles.descriptionList}>
         {prod.description}
       </div>
@@ -227,6 +185,8 @@ const ProductPage = ({title, specificProduct, gqlQuery}) => {
             </div>
         </div>
       </div>
+
+    </>}
     </div>
   )
 
