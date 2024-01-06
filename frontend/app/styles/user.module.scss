@@ -164,3 +164,29 @@
             }
             }
       }
+
+    @media screen and (max-width: $breakpoint-small){
+
+        .adminWrapp{
+           span{
+            margin-bottom: 10px;
+           }
+        }
+        .total{
+            margin: 0 auto;
+        }
+        .item{
+            margin: 0!important;
+        }
+        .buttonsAdmin{
+            flex-direction: column!important;
+            button{
+                margin: 0 auto;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                &:last-child{
+                    margin: 0 auto!important;
+                }
+            }
+        }
+      }
