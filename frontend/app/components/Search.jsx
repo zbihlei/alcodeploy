@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateBasket } from '../slices/basketSlice';
 import Link from 'next/link';
 import { LOCAL_HOST } from '../utils/constants';
-// import { searchByName } from '../services/getData';
 import { useDebounce } from '../hooks/useDebounce';
 import styles from '../styles/search.module.scss';
 
@@ -27,16 +26,6 @@ const Search = () => {
 
   const [isSearching, setIsSearching] = useState(false);
   
-// debounced search val
-  // const debouncedSetFilter = useDebounce((value) => {
-  //   setFilter(value);
-  // }, 700);
-
-  // const Search = (e) =>{
-  //   const value = e.target.value;
-  //   debouncedSetFilter(value);
-  // }
-
   const debouncedSetFilter = useDebounce(
 
     (value) => {
@@ -90,32 +79,6 @@ const Search = () => {
     }
   }, [data, filter, isSearching]);
 
-  // useEffect(() => {
-  //   if (filter.trim() !== '') {
-  //     searchByName(filter).then((res) => {
-  //       setSearch(res);
-  //     });
-  //   } else {
-  //     setSearch([]);
-  //   }
-  // }, [filter]);
-
-  // return (
-  //   <div className={styles.wrapp}>
-  //       <div className={styles.searchhead}>today  I <span>want</span>...</div>
-  //   <input onChange={Search} type="search" className={styles.searchfield} />
-  //   {search.length > 0 ? 
-  //      <div className={`${styles.searchbox} ${styles.scrollable}`}>
-  //        {search.map((el)=>(
-
-  //         <Link href={`${LOCAL_HOST}/${el.type}/${el.subtype}/${el.id}`} className={styles.searchel} key={el.id} onClick={()=>{handleCLick()}}>
-  //           <div className={styles.image} style={{ backgroundImage: `url(${el.image})`}}/>
-  //           <div className={styles.name}>{el.name}</div>
-  //         </Link>
-  //         ))}
-  //      </div> : null}
-  //   </div>
-  // )
   return (
     <div className={styles.wrapp}>
       <div className={styles.searchhead}>today I <span>want</span>...</div>
