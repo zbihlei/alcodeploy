@@ -10,26 +10,23 @@ const MenuSM = ({onClick}) => {
 
     const {isAuth, email} = useAuth();
     const basket= useSelector((state)=>state.basket.basket);
-    const [visible, setVisible] = useState(false);
+    const [clicked, setClicked] = useState(true);
 
-    const handleToggleMenu = () => {
-      setVisible((prevVisible) => !prevVisible);
-      if (onClick && typeof onClick === 'function') {
-        onClick(); 
-      }
-    };
+    useEffect(()=>{
+        setClicked((prevClicked) => !prevClicked);
+    },[clicked,onClick]);
 
   return (
     
 <div
   className={styles.right_sm}
   style={{
-    visibility: visible ? 'visible' : 'hidden',
-    opacity: visible ? '1' : '0',
+    visibility: clicked ? 'visible' : 'hidden',
+    opacity: clicked ? '1' : '0',
     transition: 'visibility 0.3s, opacity 0.3s ease-in-out'
   }}
 > 
-  <button className={styles.close} onClick={handleToggleMenu}>X</button>  
+  <button className={styles.close} onClick={()=>setClicked(((prevClicked) => !prevClicked))}>X</button>  
    {isAuth ? 
     <>
       <div className={styles.name}> <span>Hello</span>  <Link href='/user' className={styles.link}>{email}</Link> </div>
