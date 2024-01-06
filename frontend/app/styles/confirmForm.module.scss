@@ -59,3 +59,14 @@
     padding: 0;
     color: $pink;
 }
+@media screen and (max-width: $breakpoint-small){
+    .wrapp{ 
+        input{
+            width: 250px;
+        }
+       .error{
+        width: 100%;
+        text-align: center;
+       }
+    }
+  }
