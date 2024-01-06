@@ -10,12 +10,10 @@ const MenuSM = ({onClick}) => {
 
     const {isAuth, email} = useAuth();
     const basket= useSelector((state)=>state.basket.basket);
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(true);
 
     useEffect(()=>{
-      if (onClick && typeof onClick === 'function') {
-        setClicked((prevClicked) => !prevClicked);
-      }
+        setClicked((prevClicked) => !prevClicked);   
     },[onClick])
 
   return (
