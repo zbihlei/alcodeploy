@@ -11,3 +11,10 @@
     background-color: rgb(205, 203, 203);
 
 }
+@media screen and (max-width: $breakpoint-small){
+    .item{ 
+        gap: 10px;
+        flex-direction: column;
+        padding: 10px 0;
+    }
+  }

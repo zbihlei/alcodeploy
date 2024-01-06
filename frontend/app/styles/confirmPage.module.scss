@@ -16,3 +16,8 @@
         padding: 50px 0;
     }
   }
+    @media screen and (max-width: $breakpoint-small){
+    .wrapp{ 
+       padding-top: 20px;
+    }
+  }
