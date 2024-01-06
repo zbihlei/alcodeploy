@@ -14,7 +14,7 @@ const MenuSM = ({onClick}) => {
 
     useEffect(()=>{
         setClicked((prevClicked) => !prevClicked);
-    },[clicked,onClick]);
+    },[onClick]);
 
   return (
     
