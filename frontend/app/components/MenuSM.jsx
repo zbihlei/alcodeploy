@@ -16,6 +16,7 @@ const MenuSM = ({onClick}) => {
       setVisible((prevVisible) => !prevVisible);
       if (onClick && typeof onClick === 'function') {
         onClick(); 
+      }
     };
 
   return (
