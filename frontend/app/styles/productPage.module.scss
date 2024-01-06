@@ -10,6 +10,7 @@
 
 .beer{
     background-image: url('../images//beer.jpeg');
+    background-size: cover;
 }
 .energetic{
     background-image: url('../images//energetic.jpeg');
@@ -160,7 +161,11 @@
   }
   @media (max-width: $breakpoint-small) {
     .wrapp {
- 
+        .right{
+            .name{
+                padding: 0 200px;
+            }
+        }
         .descriptionList{
             padding: 0 150px;
         }
