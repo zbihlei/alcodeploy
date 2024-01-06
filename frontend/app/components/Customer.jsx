@@ -88,7 +88,9 @@ const Customer = () => {
             <div key={item._id} className={styles.link} href={''}>
               <>
                 <div className={styles.time}>
-                  <span>{item.date.replace(/ GMT\+\d{4} \(за східноєвропейським стандартним часом\)/, '')}</span>
+                  {/* <span>{item.date.replace(/ GMT\+\d{4} \(за східноєвропейським стандартним часом\)/, '')}</span> */}
+                  <span>{item.date}</span>
+
                 </div>
 
                 <div className={styles.adminWrapp}>
