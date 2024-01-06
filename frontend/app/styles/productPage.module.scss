@@ -158,3 +158,31 @@
         }
     }
   }
+  @media (max-width: $breakpoint-small) {
+    .wrapp {
+ 
+        .descriptionList{
+            padding: 0 150px;
+        }
+    
+      .low{
+        flex-direction: column;
+        .price{
+            position: relative;
+            margin-bottom: 30px;
+            span{
+                position: absolute;
+                top: 12px;
+                right: -15px;
+            }
+        }
+        .quantity{
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+        .volume{
+            margin-bottom: 30px;
+        }
+      }
+    }
+  }
