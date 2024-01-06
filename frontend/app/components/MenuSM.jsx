@@ -12,11 +12,12 @@ const MenuSM = ({onClick}) => {
     const basket= useSelector((state)=>state.basket.basket);
     const [clicked, setClicked] = useState(false);
 
-    useEffect(()=>{
+    const handleToggleMenu = () => {
+      setClicked((prevClicked) => !prevClicked);
       if (onClick && typeof onClick === 'function') {
-        setClicked(true);
+        onClick(!clicked);
       }
-    },[onClick]);
+    };
 
   return (
     
@@ -28,7 +29,7 @@ const MenuSM = ({onClick}) => {
     transition: 'visibility 0.3s, opacity 0.3s ease-in-out'
   }}
 > 
-  <button className={styles.close} onClick={()=>setClicked(((prevClicked) => !prevClicked))}>X</button>  
+  <button className={styles.close} onClick={handleToggleMenu}>X</button>  
    {isAuth ? 
     <>
       <div className={styles.name}> <span>Hello</span>  <Link href='/user' className={styles.link}>{email}</Link> </div>
