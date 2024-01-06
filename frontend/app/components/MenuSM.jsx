@@ -12,9 +12,11 @@ const MenuSM = ({onClick}) => {
     const basket= useSelector((state)=>state.basket.basket);
     const [clicked, setClicked] = useState(false);
 
-    // useEffect(()=>{
-    //     setClicked((prevClicked) => !prevClicked);
-    // },[onClick]);
+    useEffect(()=>{
+      if (onClick && typeof onClick === 'function') {
+        setClicked(true);
+      }
+    },[onClick]);
 
   return (
     
